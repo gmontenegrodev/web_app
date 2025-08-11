@@ -53,7 +53,7 @@ export default function GameTile({ team, game, liveData, teamsMetadata }) {
       
   const stateBadge = (
     <span className={`inline-flex items-center rounded-full px-1.5 py-0.5 text-[11px] font-medium ${stateStyle.badge}`}>
-      {detailedState || state}
+      {state === 'Live' ? 'Live' : (detailedState || state)}
     </span>
   );
 
