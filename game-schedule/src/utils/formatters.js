@@ -68,7 +68,11 @@ export function extractLevelFromLeague(leagueName) {
 export function getOpponentParentClubName(teamsMetaMap, opponentTeam) {
   if (!teamsMetaMap || !opponentTeam) return '';
   
-  const meta = teamsMetaMap.get(opponentTeam.id);
+  // Handle both Map and plain object
+  const meta = teamsMetaMap instanceof Map 
+    ? teamsMetaMap.get(opponentTeam.id)
+    : teamsMetaMap[opponentTeam.id];
+    
   if (!meta) return '';
   
   const leagueName = meta?.league?.name || '';
